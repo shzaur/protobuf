@@ -133,15 +133,15 @@ inline void DefaultLogHandler(LogLevel level, const char* filename, int line,
   }
   static const char* level_names[] = {"INFO", "WARNING", "ERROR", "FATAL"};
 
-  static const int android_log_levels[] = {
-      ANDROID_LOG_INFO,   // LOG(INFO),
-      ANDROID_LOG_WARN,   // LOG(WARNING)
-      ANDROID_LOG_ERROR,  // LOG(ERROR)
-      ANDROID_LOG_FATAL,  // LOG(FATAL)
-  };
+  // static const int android_log_levels[] = {
+  //     ANDROID_LOG_INFO,   // LOG(INFO),
+  //     ANDROID_LOG_WARN,   // LOG(WARNING)
+  //     ANDROID_LOG_ERROR,  // LOG(ERROR)
+  //     ANDROID_LOG_FATAL,  // LOG(FATAL)
+  // };
 
-  // Bound the logging level.
-  const int android_log_level = android_log_levels[level];
+  // // Bound the logging level.
+  // const int android_log_level = android_log_levels[level];
   ::std::ostringstream ostr;
   ostr << "[libprotobuf " << level_names[level] << " " << filename << ":"
        << line << "] " << message.c_str();
@@ -154,10 +154,10 @@ inline void DefaultLogHandler(LogLevel level, const char* filename, int line,
   fflush(stderr);
 
   // Indicate termination if needed.
-  if (android_log_level == ANDROID_LOG_FATAL) {
+  // if (android_log_level == ANDROID_LOG_FATAL) {
     // __android_log_write(ANDROID_LOG_FATAL, "libprotobuf-native",
                         // "terminating.\n");
-  }
+  // }
 }
 
 #else
